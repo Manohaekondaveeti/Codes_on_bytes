@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url(wwe1.jpg);
+        background-repeat: no-repeat; 
+        background-size: cover;
+        position: relative; 
+        height: auto;
+        width: auto;  
+    }
+    #todo-container {
+        width: 300px;
+        margin: auto;
+    }
+    #todo-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    #todo-list li {
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+    #todo-list li:hover {
+        background-color: #f1f1f1;
+    }
+    #todo-list li.done {
+        text-decoration: line-through;
+        color: #999;
+    }
+    #add-button {
+        margin-top: 10px;
+        padding: 10px;
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    #add-button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+    <div id="todo-container">
+        <ul id="todo-list">
+            <li>Task manager</li>
+        
+        </ul>
+        <input type="text" id="new-task" placeholder="Add a new task">
+        <button onclick="addTask()" id="add-button">Add</button>
+    </div>
+
+    <script>
+        function addTask() {
+            var task = document.getElementById("new-task").value;
+            if (task) {
+                var list = document.getElementById("todo-list");
+                var newTask = document.createElement("li");
+                newTask.appendChild(document.createTextNode(task));
+                newTask.onclick = function() {
+                    this.classList.toggle('done');
+                };
+                list.appendChild(newTask);
+                document.getElementById("new-task").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
